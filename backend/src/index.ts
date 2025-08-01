@@ -25,7 +25,7 @@ app.use(
   })
 );
 app.use(cookieParser());
-app.use(passport.initialize())
+app.use(passport.initialize());
 
 app.get(
   "",
@@ -42,7 +42,11 @@ app.use(`${BASE_PATH}/mfa`, mfaRoutes);
 
 app.use(errorHandler);
 
-app.listen(config.PORT, async () => {
-  console.log(`Server is running on ${config.APP_ORIGIN}:${config.PORT}`);
-  await connectDB();
-});
+// app.listen(config.PORT, async () => {
+//   console.log(`Server is running on ${config.APP_ORIGIN}:${config.PORT}`);
+//   await connectDB();
+// });
+
+connectDB();
+
+export default app;
