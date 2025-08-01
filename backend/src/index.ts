@@ -16,34 +16,42 @@ import mfaRoutes from "./modules/mfa/mfa.routes";
 const app = express();
 const BASE_PATH = config.BASE_PATH;
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(
-  cors({
-    origin: config.CLIENT_PATH,
-    credentials: true,
-  })
-);
-app.use(cookieParser());
-app.use(passport.initialize());
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
 
-app.get(
-  "",
-  asyncHandler(async (req: Request, res: Response) => {
-    res
-      .status(HTTPSTATUS.OK)
-      .json({ message: `Welcome to the API! Base path is ${BASE_PATH}` });
-  })
-);
+app.listen(8000, () => {
+  console.log(`Example app listening on port ${8000}`)
+})
 
-app.use(`${BASE_PATH}/auth`, authRoutes);
-app.use(`${BASE_PATH}/session`, sessionRoutes);
-app.use(`${BASE_PATH}/mfa`, mfaRoutes);
+// app.use(express.json());
+// app.use(express.urlencoded({ extended: true }));
+// app.use(
+//   cors({
+//     origin: config.CLIENT_PATH,
+//     credentials: true,
+//   })
+// );
+// app.use(cookieParser());
+// app.use(passport.initialize());
 
-app.use(errorHandler);
+// app.get(
+//   "",
+//   asyncHandler(async (req: Request, res: Response) => {
+//     res
+//       .status(HTTPSTATUS.OK)
+//       .json({ message: `Welcome to the API! Base path is ${BASE_PATH}` });
+//   })
+// );
 
-app.listen(config.PORT, async () => {
-  console.log(`Server is running on ${config.APP_ORIGIN}:${config.PORT}`);
-  await connectDB();
-});
+// app.use(`${BASE_PATH}/auth`, authRoutes);
+// app.use(`${BASE_PATH}/session`, sessionRoutes);
+// app.use(`${BASE_PATH}/mfa`, mfaRoutes);
+
+// app.use(errorHandler);
+
+// app.listen(config.PORT, async () => {
+//   console.log(`Server is running on ${config.APP_ORIGIN}:${config.PORT}`);
+//   await connectDB();
+// });
 
