@@ -18,3 +18,4 @@ Thumbs.db
 # Ignore env files at root level (if you have any)
 .env
 .env.local
+.vercel

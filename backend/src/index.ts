@@ -42,11 +42,11 @@ app.use(`${BASE_PATH}/mfa`, mfaRoutes);
 
 app.use(errorHandler);
 
-// app.listen(config.PORT, async () => {
-//   console.log(`Server is running on ${config.APP_ORIGIN}:${config.PORT}`);
-//   await connectDB();
-// });
+app.listen(config.PORT, async () => {
+  console.log(`Server is running on ${config.APP_ORIGIN}:${config.PORT}`);
+  await connectDB();
+});
 
-connectDB();
+// connectDB();
 
-export default app;
+// export default app;
